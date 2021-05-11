@@ -67,7 +67,7 @@ h1, h2, h3, h4, h5, h6 {
   background: white;
   transition: all 0.5s;
   z-index: 997;
-  padding: 20px 0;
+  padding: 5px 0;
 }
 
 #header.header-scrolled {
