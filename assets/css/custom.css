@@ -1,0 +1,20 @@
+.img-container {
+    position: relative;
+    text-align: center;
+    color: #fff;
+}
+
+.overlay-text {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    font-size: 4em;
+    -webkit-text-fill-color: #eee;
+    -webkit-text-stroke: 0.5px rgb(120, 188, 219);
+}
+
+.img-thumbnail:hover{
+    border-color: rgb(8, 90, 19);
+
+}
