@@ -38,23 +38,115 @@
           <br />
         </div>
       </div>
-      <div class="row shadow">
-        <div class="col-md-3"></div>
+      <div class="row shadow" :class="{ 'bg-light' : active_client }">
+        <div class="col-4">
+        </div>
         <div class="col">
-        <h3 class="text-right text-secondary" style="text-align:right;">Cannamed</h3>
-          <form>
+      <br/>
+              <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link" :class= "{active : active_client}" aria-current="page" @click="setForm('customer')">Soy Paciente</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  :class="{active: active_doctor}" @click="setForm('doctor')">Soy Especialista</a>
+        </li>
+      </ul>
+      <br/>
+       <form v-if="active_client" action="register.php" method="post">
+       <div class="row">
+         <div class="col text-center">
+               <img src="assets/img/user_logo.png" alt="logo" style="width:50%;align-content:center" >
+         </div>
+       </div>
+       <input type="hidden" name="type" value="client" autofocus>
           <div class="form-group">
-              <label for="exampleFormControlInput1">Nombres</label>
+              <label for="exampleFormControlInput1" class="text-secondary">Nombres Paciente</label>
               <input
                 type="text"
                 class="form-control"
                 id="exampleFormControlInput1"
                 maxlength="70"
                 name="name"
-              />
+              />  
             </div>
                <div class="form-group">
-              <label for="exampleFormControlInput1">Apellidos</label>
+              <label for="exampleFormControlInput1" class="text-secondary">Apellidos Paciente</label>
+              <input
+                type="text"
+                class="form-control"
+                id="exampleFormControlInput1"
+                maxlength="70"
+                name="lastname"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlInput1" class="text-secondary">Correo Electrónico</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleFormControlInput1"
+                name="email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1" class="text-secondary">Padecimiento</label>
+              <select 
+                class="form-control" 
+                id="exampleFormControlSelect1" 
+                v-model="other_customer" 
+                @click="checkCustomer()"
+              >
+                <option selected> Seleccione...</option>
+                <option value="imnsomnio">Imnsomnio</option>
+                <option value="epilepsia">Epilepsia</option>
+                <option value="artritis">Artritis</option>
+                <option value="fibromialgia">Fibromialgia</option>
+                <option value="anorexia">Anorexia</option>
+                <option value="estrés">Estrés</option>
+                <option value="ansiedad">Ansiedad</option>
+                <option value="alzheimer">Alzheimer</option>
+                <option value="parkinson">Parkinson</option>
+                <option value="otro">otro</option>
+              </select>
+            </div>
+            <div class="form-group" v-if="show_other_customer">
+            <label for="otro">Por Favor Especifíque</label>
+            <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1" class="text-secondary">Mensaje Adicional</label>
+              <textarea
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+              ></textarea>
+            </div>
+            <div class="form-group">
+            <br/>
+            <button class="btn btn-lg btn-secondary btn-block">Registrarme</button>
+            </div>
+            <br/>
+          </form>
+           <form v-if="active_doctor" action="register.php" method="post">
+         <div class="row">
+         <div class="col text-center">
+               <img src="assets/img/logos_medicina.png" alt="logo" style="width:50%;align-content:center" >
+         </div>
+       </div>
+           <input type="hidden" name="type" value="doctor">
+          <div class="form-group">
+              <label for="exampleFormControlInput1">Nombres Especialista</label>
+              <input
+                type="text"
+                class="form-control"
+                id="exampleFormControlInput1"
+                maxlength="70"
+                name="name"
+                autofocus 
+              />  
+            </div>
+               <div class="form-group">
+              <label for="exampleFormControlInput1">Apellidos Especialista</label>
               <input
                 type="text"
                 class="form-control"
@@ -69,29 +161,40 @@
                 type="email"
                 class="form-control"
                 id="exampleFormControlInput1"
-                placeholder="name@example.com"
                 name="email"
               />
             </div>
             <div class="form-group">
-              <label for="exampleFormControlSelect1">Soy</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>Paciente</option>
-                <option>Doctor/Especialista</option>
+              <label for="exampleFormControlSelect1">Especialidad</label>
+              <select class="form-control" id="exampleFormControlSelect1" v-model="other_doctor" @click="checkDoctor()">
+                <option selected> Seleccione...</option>
+                <option value="imnsomnio">Neurólogo</option>
+                <option value="epilepsia">Homeopata</option>
+                <option value="artritis">Reumatólogo</option>
+                <option value="fibromialgia">Psiquiatra</option>
+                <option value="otro">otro</option>
               </select>
             </div>
+            <div class="form-group" v-if="show_other_doctor">
+            <label for="otro">Por Favor Especifíque</label>
+            <input type="text" class="form-control">
+            </div>
             <div class="form-group">
-              <label for="exampleFormControlTextarea1">Example textarea</label>
+              <label for="exampleFormControlTextarea1">Mensaje Adicional</label>
               <textarea
                 class="form-control"
                 id="exampleFormControlTextarea1"
                 rows="3"
               ></textarea>
             </div>
+               <div class="form-group">
+            <br/>
+            <button class="btn btn-lg btn-primary btn-block">Registrarme</button>
+            </div>
             <br/>
           </form>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-4"></div>
       </div>
     </div>
   </section>
