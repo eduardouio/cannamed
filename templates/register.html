@@ -66,7 +66,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 maxlength="70"
-                name="name"
+                name="first_name"
+                required="required"
               />  
             </div>
                <div class="form-group">
@@ -76,7 +77,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 maxlength="70"
-                name="lastname"
+                name="last_name"
+                required="required"
               />
             </div>
             <div class="form-group">
@@ -86,6 +88,7 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 name="email"
+                required="required"
               />
             </div>
             <div class="form-group">
@@ -95,6 +98,8 @@
                 id="exampleFormControlSelect1" 
                 v-model="other_customer" 
                 @click="checkCustomer()"
+                required="required"
+                name="suffering"
               >
                 <option selected> Seleccione...</option>
                 <option value="imnsomnio">Imnsomnio</option>
@@ -111,7 +116,7 @@
             </div>
             <div class="form-group" v-if="show_other_customer">
             <label for="otro">Por Favor Especifíque</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" required="required" name="other_suffering">
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1" class="text-secondary">Mensaje Adicional</label>
@@ -119,6 +124,7 @@
                 class="form-control"
                 id="exampleFormControlTextarea1"
                 rows="3"
+                name="message"
               ></textarea>
             </div>
             <div class="form-group">
@@ -141,7 +147,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 maxlength="70"
-                name="name"
+                name="first_name"
+                required="required"
                 autofocus 
               />  
             </div>
@@ -152,7 +159,8 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 maxlength="70"
-                name="lastname"
+                name="last_name"
+                required="required"
               />
             </div>
             <div class="form-group">
@@ -162,11 +170,19 @@
                 class="form-control"
                 id="exampleFormControlInput1"
                 name="email"
+                required="required"
               />
             </div>
             <div class="form-group">
               <label for="exampleFormControlSelect1">Especialidad</label>
-              <select class="form-control" id="exampleFormControlSelect1" v-model="other_doctor" @click="checkDoctor()">
+              <select 
+                class="form-control"
+                id="exampleFormControlSelect1"
+                v-model="other_doctor"
+                @click="checkDoctor()"
+                required="required"
+                name="suffering"
+                >
                 <option selected> Seleccione...</option>
                 <option value="imnsomnio">Neurólogo</option>
                 <option value="epilepsia">Homeopata</option>
@@ -177,7 +193,7 @@
             </div>
             <div class="form-group" v-if="show_other_doctor">
             <label for="otro">Por Favor Especifíque</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="other_suffering" required="required">
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Mensaje Adicional</label>
@@ -185,6 +201,7 @@
                 class="form-control"
                 id="exampleFormControlTextarea1"
                 rows="3"
+                name="message"
               ></textarea>
             </div>
                <div class="form-group">
