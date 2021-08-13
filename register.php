@@ -5,7 +5,7 @@ $db = new Model();
 $data = $_POST;
 
 if( $data['suffering'] == 'otro'){
-
+    $data['suffering'] = $data['other_suffering'];
 }
 
 // TODO Registrar los pacientes y los doctores por separado

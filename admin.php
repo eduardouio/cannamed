@@ -24,13 +24,13 @@ function getTable(){
         <thead>
         <tr>
             <th>#</th>
-            <th>ID</th>
             <th>NOMBRES</th>
             <th>APELLIDOS</th>
             <th>TIPO</th>
             <th>EMAIL</th>
             <th>PADECIMIENTO</th>
             <th>MENSAJE</th>
+            <th>FECHA</th>
         </tr>
         </thead>
     <tbody>
@@ -40,13 +40,13 @@ function getTable(){
     foreach($data as $item){
         $template.= ('<tr>');
         $template.= ('<td>' . $idx  .'</td>');
-        $template.= ('<td>' . $item['id']  .'</td>');
         $template.= ('<td>' . $item['first_name']  .'</td>');
         $template.= ('<td>' . $item['last_name']  .'</td>');
         $template.= ('<td>' . $item['type']  .'</td>');
         $template.= ('<td>' . $item['email']  .'</td>');
         $template.= ('<td>' . $item['suffering']  .'</td>');
         $template.= ('<td>' . $item['message']  .'</td>');
+        $template.= ('<td>' . $item['create_date']  .'</td>');
         $template.= ('</tr>');
         $idx++;
     }

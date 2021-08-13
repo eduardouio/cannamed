@@ -40,6 +40,7 @@ const appVue = {
     },
   },
   properties:{
+
     
   },
 };
